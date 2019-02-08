@@ -35,8 +35,8 @@
         <input type="password" name="password" value="" required>
         </label>
         <br>
-        <button type="submit">Submit</button>
-        <p><a href="admin_createuser.php">Create New User</a></p>
+        <button type="submit">Submit</button> <br><br>
+        <!-- <a href="admin_createuser.php">Create New User</a> -->
     </form>
     
 </body>

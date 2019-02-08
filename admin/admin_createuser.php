@@ -9,7 +9,7 @@ if(isset($_POST['submit'])){
     //trim would just be a starting point
     $fname = trim($_POST['fname']);
     $username = trim($_POST['username']);
-    // $password = trim($_POST['password']);
+    $password = trim($_POST['password']);
     $email = trim($_POST['email']);
 
     $chars = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
@@ -24,14 +24,14 @@ if(isset($_POST['submit'])){
         $message = 'Data seems alright...';
     }
 
-    function send_email (){
-        $to = 'jaclynflomen@hotmail.com';
+    function send_email() {
+        $to = $_POST['email'];
         $subject = 'Your new password for Roku';
         $message = 'Your password is: '.$_POST['password'];
         $headers = 'Message From Roku Login';
         // $headers .= 'Reply-To: '.$_POST['email'];
         mail($to, $subject, $message, $headers);
-        header('Location: ../admin_createuser.php');
+        // header('Location: ../index.php');
     }
         send_email();
     
