@@ -12,11 +12,6 @@ if(isset($_POST['submit'])){
     $password = trim($_POST['password']);
     $email = trim($_POST['email']);
 
-    $chars = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
-    $password = substr(str_shuffle($chars), 0, 7);
-    // $password = sha1(substr(str_shuffle($chars), 0, 7));
-
-
     // Validation
     if(empty($username) || empty($email)){
         // $message = 'Please fill the required fields.';
@@ -24,19 +19,6 @@ if(isset($_POST['submit'])){
         $result = createUser($fname, $username, $password, $email);
         // $message = 'Data seems alright...';
     }
-
-    function send_email(){
-        $to = 'jaclynflomen@hotmail.com';
-        $subject = 'Your new password for Roku';
-        $username_ = 'Username: '.$_POST['username'];
-        $password_ = 'Password: '.$_POST['password'];
-        $body_ = 'URL: http://netflix.com';
-        $headers = 'Message From Roku Login';
-        // $headers .= 'Reply-To: '.$_POST['email'];
-        mail($to, $subject, $username_, $password_, $body_, $headers);
-        header('Location: ./index.php');
-    }
-    send_email();  
 }
 
 ?>
