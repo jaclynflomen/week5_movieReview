@@ -13,6 +13,8 @@ function createUser($fname, $username, $password, $email) {
     //user_pass = $password
     //user_email = $email
 
+    
+
     $create_user_query = 'INSERT INTO tbl_user (user_fname, user_name, user_pass, user_email) VALUES (:fname, :username, :password, :email)';
 
     $create_user_set = $pdo->prepare($create_user_query);
