@@ -12,6 +12,20 @@ if(isset($_POST['submit'])){
     $password = trim($_POST['password']);
     $email = trim($_POST['email']);
 
+    $chars = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
+    $password = substr(str_shuffle($chars), 0, 7);
+
+    function send_email (){
+        $to = $_POST['user_email'];
+        $subject = 'Your new password for Roku';
+        $message = 'Your password is: '.$_POST['user_pass'];
+        $headers = 'Message From Roku Login';
+        // $headers .= 'Reply-To: '.$_POST['user_email'];
+        mail($to, $subject, $message, $headers);
+    }
+        send_email();
+
+
     //Validation
     if(empty($username) || empty($password) || empty($email)){
         $message = 'Please fill the required fields.';
@@ -19,6 +33,7 @@ if(isset($_POST['submit'])){
         $result = createUser($fname, $username, $password, $email);
         $message = 'Data seems alright...';
     }
+    
 }
 
 ?>
@@ -46,10 +61,11 @@ if(isset($_POST['submit'])){
         <label for="email">Email</label>
         <input type="email" name="email" id="email"> <br><br>
 
-        <label for="password">Password</label>
-        <input type="text" name="password" id="password"> <br><br>
+        <!-- <label for="password">Password</label>
+        <input type="text" name="password" id="password"> <br><br> -->
 
         <button type="submit" name="submit">Create User</button>
+        
     </form>
 </body>
 </html>
